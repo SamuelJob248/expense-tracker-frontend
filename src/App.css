@@ -1,4 +1,4 @@
-/* src/App.css */
+
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -8,22 +8,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 20px;
-  background-color: #f4f7f6; /* Light background for the page */
-  color: #333; /* Default text color */
+  background-color: #f4f7f6; 
+  color: #333; 
 }
 
 /* Main App container */
 .App {
-  max-width: 900px; /* Limit overall width */
-  margin: 0 auto;   /* Center the app on the page */
-  background-color: #fff; /* White background for the app area */
+  max-width: 900px; 
+  margin: 0 auto;  
+  background-color: #fff; 
   padding: 20px 30px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 h1, h2, h3 {
-  color: #2c3e50; /* Darker color for headings */
+  color: #2c3e50; 
 }
 
 h1 {
@@ -37,13 +37,13 @@ hr {
   margin: 30px 0;
 }
 
-/* --- Form Styling (ExpenseForm) --- */
+
 form div {
-  margin-bottom: 15px; /* Space between form rows */
+  margin-bottom: 15px;
 }
 
 form label {
-  display: block; /* Make labels take their own line */
+  display: block; 
   margin-bottom: 5px;
   font-weight: bold;
   color: #555;
@@ -54,7 +54,7 @@ form input[type="number"],
 form input[type="date"],
 form select,
 form textarea {
-  width: 95%; /* Make inputs take most of the width */
+  width: 95%; 
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -62,37 +62,37 @@ form textarea {
 }
 
 form textarea {
-  min-height: 60px; /* Make textarea slightly taller */
+  min-height: 60px; 
 }
 
 form button[type="submit"],
 form button[type="button"] {
-  background-color: #3498db; /* Blue background */
+  background-color: #3498db; 
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.2s ease; /* Smooth hover effect */
+  transition: background-color 0.2s ease; 
 }
 
 form button[type="submit"]:hover,
 form button[type="button"]:hover {
-  background-color: #2980b9; /* Darker blue on hover */
+  background-color: #2980b9; 
 }
 
-form button[type="button"] { /* Style Cancel button differently */
-   background-color: #e74c3c; /* Red background */
+form button[type="button"] { 
+   background-color: #e74c3c; 
    margin-left: 10px;
 }
  form button[type="button"]:hover {
-   background-color: #c0392b; /* Darker red on hover */
+   background-color: #c0392b; 
 }
 
-/* --- Filter Controls Styling --- */
+
 .filters {
-  background-color: #ecf0f1; /* Light grey background for filter section */
+  background-color: #ecf0f1;
   padding: 15px;
   border-radius: 4px;
   margin-bottom: 20px;
@@ -114,7 +114,7 @@ form button[type="button"] { /* Style Cancel button differently */
    border-radius: 4px;
 }
 .filters button {
-    background-color: #95a5a6; /* Grey background */
+    background-color: #95a5a6;
     color: white;
     padding: 8px 15px;
     border: none;
@@ -127,37 +127,36 @@ form button[type="button"] { /* Style Cancel button differently */
 }
 
 
-/* --- Summary Display Styling --- */
-/* (Add specific styles if needed, basic paragraph/list styles might be okay) */
-.SummaryDisplay p strong { /* Example */
+
+.SummaryDisplay p strong { 
    color: #34495e;
 }
 
-/* --- Expense List Styling --- */
+
 ul {
-  list-style: none; /* Remove default bullet points */
+  list-style: none; 
   padding: 0;
 }
 
 li {
-  background-color: #f9f9f9; /* Slightly off-white background for items */
+  background-color: #f9f9f9; 
   border: 1px solid #eee;
   padding: 15px;
-  margin-bottom: 10px; /* Space between list items */
+  margin-bottom: 10px;
   border-radius: 4px;
-  display: flex; /* Use flexbox for alignment */
-  justify-content: space-between; /* Space out content and buttons */
+  display: flex; 
+  justify-content: space-between; 
   align-items: center;
-  gap: 10px; /* Space between items in the flex container */
+  gap: 10px; 
 }
 
-li span { /* Target the text part */
-   flex-grow: 1; /* Allow text to take up available space */
-   margin-right: 10px; /* Add space before buttons */
+li span {
+   flex-grow: 1; 
+   margin-right: 10px; 
 }
 
 li button {
-    background-color: #bdc3c7; /* Lighter grey */
+    background-color: #bdc3c7; 
     color: #333;
     padding: 5px 10px;
     border: none;
@@ -165,50 +164,49 @@ li button {
     cursor: pointer;
     font-size: 0.9rem;
     transition: background-color 0.2s ease;
-    flex-shrink: 0; /* Prevent buttons from shrinking too much */
+    flex-shrink: 0; 
 }
 li button:hover {
     background-color: #95a5a6;
 }
-/* Style delete button specifically */
+
 li button:last-child {
-    background-color: #f1c40f; /* Yellow/Orange */
+    background-color: #f1c40f; 
     color: #fff;
 }
  li button:last-child:hover {
     background-color: #f39c12;
 }
 
-/* Basic Error/Success message styling */
-p[style*="color: red"] { /* Target elements with inline red color */
-    font-weight: bold;
-    background-color: #ffebee; /* Light red background */
-    border: 1px solid #e57373; /* Red border */
-    padding: 10px;
-    border-radius: 4px;
-}
- p[style*="color: green"] { /* Target elements with inline green color */
-    font-weight: bold;
-    background-color: #e8f5e9; /* Light green background */
-    border: 1px solid #81c784; /* Green border */
-    padding: 10px;
-    border-radius: 4px;
-}
-/* src/App.css */
-/* ... (keep all existing styles above) ... */
 
-/* --- Loading Spinner --- */
+p[style*="color: red"] {
+    font-weight: bold;
+    background-color: #ffebee; 
+    border: 1px solid #e57373;
+    padding: 10px;
+    border-radius: 4px;
+}
+ p[style*="color: green"] { 
+    font-weight: bold;
+    background-color: #e8f5e9;
+    border: 1px solid #81c784;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+
+
 .loader {
-  border: 5px solid #f3f3f3; /* Light grey border */
-  border-top: 5px solid #3498db; /* Blue color for the spinning part */
+  border: 5px solid #f3f3f3; 
+  border-top: 5px solid #3498db; 
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  animation: spin 1s linear infinite; /* Animation definition */
-  margin: 20px auto; /* Center the spinner */
+  animation: spin 1s linear infinite; 
+  margin: 20px auto; 
 }
 
-/* Spin animation */
+
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
