@@ -43,7 +43,7 @@ function ExpenseForm({ expenseToEdit, onSaveComplete, onCancelEdit }) {
 
     
     if (!title || !amount || !date || !category) {
-        toast.error("Please fill in Title, Amount, Date, and Category."); // Use toast
+        toast.error("Please fill in Title, Amount, Date, and Category."); 
         return;
     }
      const numericAmount = parseFloat(amount);
