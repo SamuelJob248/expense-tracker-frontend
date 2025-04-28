@@ -1,8 +1,8 @@
-// src/components/SummaryDisplay.js
+
 import React, { useState, useEffect } from 'react';
-import { getSummary } from '../services/api'; // Import the getSummary API function
+import { getSummary } from '../services/api'; 
 import Spinner from './Spinner';
-// Accept refreshKey as a prop to trigger re-fetching
+
 function SummaryDisplay({ refreshKey }) {
   const [summaryData, setSummaryData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -13,7 +13,7 @@ function SummaryDisplay({ refreshKey }) {
       try {
         setLoading(true);
         setError(null);
-        const response = await getSummary(); // Call the API function
+        const response = await getSummary();
         setSummaryData(response.data);
       } catch (err) {
         console.error("Error fetching summary:", err);
@@ -24,10 +24,10 @@ function SummaryDisplay({ refreshKey }) {
     };
 
     fetchSummary();
-    // Add refreshKey as a dependency. When it changes, useEffect runs again.
+  
   }, [refreshKey]);
 
-  // --- Render Logic ---
+  
 
   if (loading) {
     return <Spinner />;
@@ -37,7 +37,7 @@ function SummaryDisplay({ refreshKey }) {
     return <p style={{ color: 'red' }}>{error}</p>;
   }
 
-  // Ensure summaryData is not null before trying to access its properties
+ 
   if (!summaryData) {
       return <p>No summary data available.</p>;
   }
