@@ -1,38 +1,215 @@
+/* src/App.css */
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f7f6; /* Light background for the page */
+  color: #333; /* Default text color */
+}
+
+/* Main App container */
 .App {
+  max-width: 900px; /* Limit overall width */
+  margin: 0 auto;   /* Center the app on the page */
+  background-color: #fff; /* White background for the app area */
+  padding: 20px 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+h1, h2, h3 {
+  color: #2c3e50; /* Darker color for headings */
+}
+
+h1 {
   text-align: center;
+  margin-bottom: 30px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 30px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* --- Form Styling (ExpenseForm) --- */
+form div {
+  margin-bottom: 15px; /* Space between form rows */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+form label {
+  display: block; /* Make labels take their own line */
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="date"],
+form select,
+form textarea {
+  width: 95%; /* Make inputs take most of the width */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+form textarea {
+  min-height: 60px; /* Make textarea slightly taller */
+}
+
+form button[type="submit"],
+form button[type="button"] {
+  background-color: #3498db; /* Blue background */
   color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s ease; /* Smooth hover effect */
 }
 
-.App-link {
-  color: #61dafb;
+form button[type="submit"]:hover,
+form button[type="button"]:hover {
+  background-color: #2980b9; /* Darker blue on hover */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+form button[type="button"] { /* Style Cancel button differently */
+   background-color: #e74c3c; /* Red background */
+   margin-left: 10px;
+}
+ form button[type="button"]:hover {
+   background-color: #c0392b; /* Darker red on hover */
+}
+
+/* --- Filter Controls Styling --- */
+.filters {
+  background-color: #ecf0f1; /* Light grey background for filter section */
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  border: 1px solid #bdc3c7;
+}
+.filters label {
+   margin-right: 5px;
+   margin-left: 10px;
+   font-weight: normal;
+}
+ .filters label:first-child {
+   margin-left: 0;
+}
+.filters select,
+.filters input {
+   padding: 8px;
+   margin-right: 10px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+}
+.filters button {
+    background-color: #95a5a6; /* Grey background */
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.filters button:hover {
+     background-color: #7f8c8d;
+}
+
+
+/* --- Summary Display Styling --- */
+/* (Add specific styles if needed, basic paragraph/list styles might be okay) */
+.SummaryDisplay p strong { /* Example */
+   color: #34495e;
+}
+
+/* --- Expense List Styling --- */
+ul {
+  list-style: none; /* Remove default bullet points */
+  padding: 0;
+}
+
+li {
+  background-color: #f9f9f9; /* Slightly off-white background for items */
+  border: 1px solid #eee;
+  padding: 15px;
+  margin-bottom: 10px; /* Space between list items */
+  border-radius: 4px;
+  display: flex; /* Use flexbox for alignment */
+  justify-content: space-between; /* Space out content and buttons */
+  align-items: center;
+  gap: 10px; /* Space between items in the flex container */
+}
+
+li span { /* Target the text part */
+   flex-grow: 1; /* Allow text to take up available space */
+   margin-right: 10px; /* Add space before buttons */
+}
+
+li button {
+    background-color: #bdc3c7; /* Lighter grey */
+    color: #333;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0; /* Prevent buttons from shrinking too much */
+}
+li button:hover {
+    background-color: #95a5a6;
+}
+/* Style delete button specifically */
+li button:last-child {
+    background-color: #f1c40f; /* Yellow/Orange */
+    color: #fff;
+}
+ li button:last-child:hover {
+    background-color: #f39c12;
+}
+
+/* Basic Error/Success message styling */
+p[style*="color: red"] { /* Target elements with inline red color */
+    font-weight: bold;
+    background-color: #ffebee; /* Light red background */
+    border: 1px solid #e57373; /* Red border */
+    padding: 10px;
+    border-radius: 4px;
+}
+ p[style*="color: green"] { /* Target elements with inline green color */
+    font-weight: bold;
+    background-color: #e8f5e9; /* Light green background */
+    border: 1px solid #81c784; /* Green border */
+    padding: 10px;
+    border-radius: 4px;
+}
+/* src/App.css */
+/* ... (keep all existing styles above) ... */
+
+/* --- Loading Spinner --- */
+.loader {
+  border: 5px solid #f3f3f3; /* Light grey border */
+  border-top: 5px solid #3498db; /* Blue color for the spinning part */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite; /* Animation definition */
+  margin: 20px auto; /* Center the spinner */
+}
+
+/* Spin animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
