@@ -1,22 +1,22 @@
-// src/components/ExpenseList.js
+
 import React, { useState, useEffect } from 'react';
 import { getExpenses, deleteExpense } from '../services/api';
-import { toast } from 'react-toastify'; // <-- Import toast
+import { toast } from 'react-toastify'; 
 import Spinner from './Spinner';
-// Accept the filters prop from App.js
+
 function ExpenseList({ onDataChange, onEditClick, filters }) {
   const [expenses, setExpenses] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  // Removed deleteError state variable
 
-  // useEffect hook: Runs when component mounts AND when 'filters' prop changes
+
+
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
         setLoading(true);
         setError(null);
-        // Pass the filters object to the getExpenses API call
+
         const response = await getExpenses(filters);
         setExpenses(response.data);
       } catch (err) {
@@ -28,25 +28,25 @@ function ExpenseList({ onDataChange, onEditClick, filters }) {
     };
 
     fetchExpenses();
-    // Add filters to the dependency array.
-  }, [filters]); // Re-run effect when filters change
+
+  }, [filters]); 
 
   const handleDelete = async (idToDelete) => {
       if (window.confirm('Are you sure you want to delete this expense?')) {
           try {
               await deleteExpense(idToDelete);
-              toast.success('Expense deleted successfully!'); // Use toast
+              toast.success('Expense deleted successfully!'); 
               if (onDataChange) {
-                  onDataChange(); // Trigger refresh
+                  onDataChange(); 
               }
           } catch (err) {
               console.error("Error deleting expense:", err);
-              toast.error(`Failed to delete expense. Please try again.`); // Use toast
+              toast.error(`Failed to delete expense. Please try again.`); 
           }
       }
   };
 
-  // --- Render Logic ---
+ 
   if (loading) return <Spinner />;;
   if (error) return <p style={{ color: 'red' }}>{error}</p>;
 
