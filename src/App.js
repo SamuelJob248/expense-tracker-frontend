@@ -1,5 +1,5 @@
-// src/App.js
-import React, { useState, useEffect } from 'react'; // Import useEffect
+
+import React, { useState, useEffect } from 'react'; 
 import './App.css';
 import ExpenseList from './components/ExpenseList';
 import ExpenseForm from './components/ExpenseForm';
@@ -7,7 +7,6 @@ import SummaryDisplay from './components/SummaryDisplay';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// Define categories here or import from a shared constants file
 const CATEGORIES = [
     'Food', 'Rent', 'Utilities', 'Entertainment', 'Travel', 'Shopping', 'Others'
 ];
@@ -16,10 +15,10 @@ function App() {
   const [refreshKey, setRefreshKey] = useState(0);
   const [expenseToEdit, setExpenseToEdit] = useState(null);
 
-  // --- Filter State ---
-  const [selectedCategory, setSelectedCategory] = useState(''); // '' means All Categories
-  const [selectedYear, setSelectedYear] = useState('');     // '' means All Years
-  const [selectedMonth, setSelectedMonth] = useState('');   // '' means All Months
+
+  const [selectedCategory, setSelectedCategory] = useState('');
+  const [selectedYear, setSelectedYear] = useState('');     
+  const [selectedMonth, setSelectedMonth] = useState('');   
 
   const triggerRefresh = () => {
     setRefreshKey(prevKey => prevKey + 1);
@@ -55,19 +54,15 @@ function App() {
       setSelectedMonth('');
   };
 
-  // --- Prepare filters object for API ---
-  // Only include filters that have a value
+
   const currentFilters = {};
   if (selectedCategory) currentFilters.category = selectedCategory;
   if (selectedYear) currentFilters.year = selectedYear;
   if (selectedMonth) currentFilters.month = selectedMonth;
 
-  // Trigger refresh whenever filters change
-  // Note: This might cause multiple refreshes if filters are passed directly.
-  // A more optimized approach might use a dedicated "Apply Filters" button
-  // or debounce the changes, but let's start simple.
+
   useEffect(() => {
-      triggerRefresh(); // Refresh list when filters change
+      triggerRefresh(); 
   }, [selectedCategory, selectedYear, selectedMonth]);
 
 
@@ -138,10 +133,10 @@ function App() {
 
 
       <ExpenseList
-          key={refreshKey} // Refresh list on add/delete/update AND filter change
-          onDataChange={triggerRefresh} // Needed? Refresh happens via key prop now
+          key={refreshKey} 
+          onDataChange={triggerRefresh} 
           onEditClick={handleEditClick}
-          filters={currentFilters} // Pass the current filters down
+          filters={currentFilters} 
       />
 
     </div>
