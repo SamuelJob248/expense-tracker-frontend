@@ -1,26 +1,25 @@
-// src/components/ExpenseForm.js
+
 import React, { useState, useEffect } from 'react';
 import { addExpense, updateExpense } from '../services/api';
-import { toast } from 'react-toastify'; // <-- Import toast
+import { toast } from 'react-toastify'; 
 
 const CATEGORIES = [
   'Food', 'Rent', 'Utilities', 'Entertainment', 'Travel', 'Shopping', 'Others'
 ];
 
-// Accept expenseToEdit, onSaveComplete, onCancelEdit props from App.js
 function ExpenseForm({ expenseToEdit, onSaveComplete, onCancelEdit }) {
-  // State for form fields
+
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
   const [category, setCategory] = useState(CATEGORIES[0]);
   const [notes, setNotes] = useState('');
-  // Removed error/success state variables
 
-  // Determine if the form is in edit mode
+
+ 
   const isEditMode = Boolean(expenseToEdit);
 
-  // useEffect to populate form when expenseToEdit changes
+ 
   useEffect(() => {
     if (isEditMode) {
       setTitle(expenseToEdit.title);
@@ -29,7 +28,7 @@ function ExpenseForm({ expenseToEdit, onSaveComplete, onCancelEdit }) {
       setCategory(expenseToEdit.category);
       setNotes(expenseToEdit.notes || '');
     } else {
-      // Clear form for Add mode
+    
       setTitle('');
       setAmount('');
       setDate('');
@@ -38,35 +37,35 @@ function ExpenseForm({ expenseToEdit, onSaveComplete, onCancelEdit }) {
     }
   }, [expenseToEdit, isEditMode]);
 
-  // --- Form Submission Handler (Handles both Add and Update) ---
+
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // Basic validation
+    
     if (!title || !amount || !date || !category) {
         toast.error("Please fill in Title, Amount, Date, and Category."); // Use toast
         return;
     }
      const numericAmount = parseFloat(amount);
     if (isNaN(numericAmount) || numericAmount <= 0) {
-         toast.error("Amount must be a positive number."); // Use toast
+         toast.error("Amount must be a positive number."); 
          return;
     }
-    // Prepare data (ensure amount is number)
+    
     const expenseData = { title, amount: numericAmount, date, category, notes };
 
     try {
       let response;
       if (isEditMode) {
-        // --- Update existing expense ---
+        
         response = await updateExpense(expenseToEdit.id, expenseData);
-        toast.success(`Expense "${response.data.title}" updated successfully!`); // Use toast
+        toast.success(`Expense "${response.data.title}" updated successfully!`); 
       } else {
-        // --- Add new expense ---
+        
         response = await addExpense(expenseData);
-        toast.success(`Expense "${response.data.title}" added successfully!`); // Use toast
+        toast.success(`Expense "${response.data.title}" added successfully!`);
       }
-      // Call the callback from App.js to trigger refresh and clear edit state
+      
       if (onSaveComplete) {
          onSaveComplete();
        }
@@ -74,16 +73,16 @@ function ExpenseForm({ expenseToEdit, onSaveComplete, onCancelEdit }) {
     } catch (err) {
       console.error(`Error ${isEditMode ? 'updating' : 'adding'} expense:`, err);
       const errorMessage = err.response?.data ? JSON.stringify(err.response.data) : err.message;
-      toast.error(`Failed to ${isEditMode ? 'update' : 'add'} expense: ${errorMessage}`); // Use toast
+      toast.error(`Failed to ${isEditMode ? 'update' : 'add'} expense: ${errorMessage}`); 
     }
   };
 
-  // --- JSX for the form ---
+
   return (
     <form onSubmit={handleSubmit}>
       <h2>{isEditMode ? 'Edit Expense' : 'Add New Expense'}</h2>
 
-      {/* Removed error/success p tags */}
+    
 
       <div>
         <label htmlFor="title">Title:</label>
